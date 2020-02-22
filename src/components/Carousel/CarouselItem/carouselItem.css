@@ -1,0 +1,17 @@
+.itemDiv{
+  padding: 20px;
+  display: inline-block;
+}
+
+/* for mobile phones */
+.imageHolder{
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (min-width: 480px)  {
+  .imageHolder{
+    height: 200px;
+    width: 200px;
+  }
+}
