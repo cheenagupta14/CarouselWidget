@@ -3,8 +3,8 @@ import SliderButton from "./SliderButton/index";
 import Slider from "./Slider/index";
 import "./carousel.css";
 
-const noOFItemsVisible = (itemSize) => {
-    const showItems = Math.floor(window.innerWidth / itemSize);
+const noOFItemsVisible = (itemSize, windowWidth) => {
+    const showItems = Math.floor(windowWidth / itemSize);
     return showItems;
 }
 
@@ -13,45 +13,55 @@ class Carousel extends React.PureComponent {
         const { noOfItemsInCarousel, showItems } = this.state;
         if (buttonType === "Next") {
             this.setState((previousState) => {
-                const activeIndexs = [...previousState.activeIndexs];
+                const activeIndexes = [...previousState.activeIndexes];
                 for (let i = 0; i < showItems; i++) {
-                    if (activeIndexs[i] !== noOfItemsInCarousel - 1)
-                        activeIndexs[i] += 1;
+                    if (activeIndexes[i] !== noOfItemsInCarousel - 1)
+                        activeIndexes[i] += 1;
                     else
-                        activeIndexs[i] = 0;
+                        activeIndexes[i] = 0;
                 }
-                return { activeIndexs: activeIndexs }
+                return { activeIndexes: activeIndexes }
             });
         }
         else {
             this.setState((previousState) => {
-                const activeIndexs = [...previousState.activeIndexs];
+                const activeIndexes = [...previousState.activeIndexes];
                 for (let i = 0; i < showItems; i++) {
-                    if (activeIndexs[i] !== 0)
-                        activeIndexs[i] -= 1;
+                    if (activeIndexes[i] !== 0)
+                        activeIndexes[i] -= 1;
                     else
-                        activeIndexs[i] = noOfItemsInCarousel - 1;
+                        activeIndexes[i] = noOfItemsInCarousel - 1;
                 }
-                return { activeIndexs: activeIndexs }
+                return { activeIndexes: activeIndexes }
             });
         }
     }
 
+   // This method is used to update the windowWidth and  items visible in the carousel when screen size changes
+      updateCarouselItems = () => {
+        let itemSize = 240;
+        let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+        let showItems = noOFItemsVisible(itemSize,windowWidth);
+        let activeIndexes = []
+       for (let i = 0; i < showItems; i++) // initiate the array of active indexes 
+            activeIndexes.push(i);
+        
+        this.setState({ windowWidth , showItems, activeIndexes});
+      }
+
     constructor(props) {
         super(props);
-        const showItems = noOFItemsVisible(240);
-        const activeIndexs = [];
-
-        for (let i = 0; i < showItems; i++) // initiate the array of active indexes 
-            activeIndexs.push(i);
 
         this.state = {
-            items: [],
-            isLoaded: false,
-            activeIndexs: activeIndexs,
-            noOfItemsInCarousel: 6,
-            showItems: showItems
+            items: [], // list of carousel items
+            isLoaded: false, // state to show of data is loaded or not
+            activeIndexes: [], // array containing indexes of items(images) visible in carousel
+            noOfItemsInCarousel: 6, 
+            showItems: 0, // number of active items to be shown in carousel depending on screen size
+            windowWidth:0, 
+            error: null
         }
+        this.updateCarouselItems = this.updateCarouselItems.bind(this);
     }
 
     componentDidMount() {
@@ -64,28 +74,33 @@ class Carousel extends React.PureComponent {
                         items: result.hits.slice(0, this.state.noOfItemsInCarousel)
                     });
                 }
-                //   ,
-                //   // Note: it's important to handle errors here
-                //   // instead of a catch() block so that we don't swallow
-                //   // exceptions from actual bugs in components.
-                //   (error) => {
-                //     this.setState({
-                //       isLoaded: true,
-                //       error
-                //     });
-                //   }
+                  ,
+                  (error) => {
+                    this.setState({
+                      isLoaded: true,
+                      error
+                    });
+                  }
             )
+
+            this.updateCarouselItems();
+            window.addEventListener("resize", this.updateCarouselItems);
+            
     }
+
+      componentWillUnmount() {
+        window.removeEventListener("resize", this.updateCarouselItems.bind(this));
+      }
 
     render() {
 
-        const { activeIndexs, items } = this.state;
+        const { activeIndexes, items , windowWidth} = this.state;
         return (
             <>
                 {
-                    window.innerWidth > 480 ? // Placement of buttons and slider changes for mobile and desktop
+                   windowWidth > 480 ? // Placement of buttons and slider changes for mobile and desktop
                         <>
-                            <Slider items={items} activeIndexs={activeIndexs} />
+                            <Slider items={items} activeIndexes={activeIndexes} />
                             <div className="sliderBtnContainer">
                                 <SliderButton buttonType="Prev" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                                 <SliderButton buttonType="Next" showText={true} sliderButtonClick={this.onSliderButtonClick} />
@@ -93,7 +108,7 @@ class Carousel extends React.PureComponent {
                         </> :
                         <div style={{ display: "flex" }}>
                             <SliderButton buttonType="Prev" showText={false} sliderButtonClick={this.onSliderButtonClick} />
-                            <Slider items={items} activeIndexs={activeIndexs} />
+                            <Slider items={items} activeIndexes={activeIndexes} />
                             <SliderButton buttonType="Next" showText={false} sliderButtonClick={this.onSliderButtonClick} />
                         </div>
                 }

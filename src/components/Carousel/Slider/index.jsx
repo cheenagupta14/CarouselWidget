@@ -2,13 +2,14 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import CarouselItem from "../CarouselItem/index";
+import "./slider.css";
 
 const Slider = React.memo((props) => {
-    const { activeIndexs, items } = props;
+    const { activeIndexes, items } = props;
     return (
-        <div>
+        <div className="carouselItemContainer">
             {
-                items.length > 0 && activeIndexs.map((activeIndex) => {
+                items.length > 0 && activeIndexes.map((activeIndex) => {
                     const item = items[activeIndex];
                     const imageInfo = {
                         url: item.webformatURL
@@ -21,7 +22,7 @@ const Slider = React.memo((props) => {
 });
 
 Slider.prototypes = {
-    activeIndexs: PropTypes.arrayOf(PropTypes.number).isRequired,
+    activeIndexes: PropTypes.arrayOf(PropTypes.number).isRequired,
     items: PropTypes.object.isRequired
 }
 
