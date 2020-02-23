@@ -3,10 +3,12 @@ import SliderButton from "./SliderButton/index";
 import Slider from "./Slider/index";
 import "./carousel.css";
 
+// calculate number of active items in carousel
 const noOFItemsVisible = (itemSize, windowWidth) => {
     const showItems = Math.floor(windowWidth / itemSize);
     return showItems;
 }
+
 
 class Carousel extends React.PureComponent {
     onSliderButtonClick = (buttonType) => {
@@ -94,13 +96,13 @@ class Carousel extends React.PureComponent {
 
     render() {
 
-        const { activeIndexes, items , windowWidth} = this.state;
+        const { activeIndexes, items , windowWidth, isLoaded} = this.state;
         return (
             <>
                 {
                    windowWidth > 480 ? // Placement of buttons and slider changes for mobile and desktop
                         <>
-                            <Slider items={items} activeIndexes={activeIndexes} />
+                            <Slider items={items} activeIndexes={activeIndexes}  isLoaded={isLoaded} />
                             <div className="sliderBtnContainer">
                                 <SliderButton buttonType="Prev" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                                 <SliderButton buttonType="Next" showText={true} sliderButtonClick={this.onSliderButtonClick} />
@@ -108,11 +110,10 @@ class Carousel extends React.PureComponent {
                         </> :
                         <div style={{ display: "flex" }}>
                             <SliderButton buttonType="Prev" showText={false} sliderButtonClick={this.onSliderButtonClick} />
-                            <Slider items={items} activeIndexes={activeIndexes} />
+                            <Slider items={items} activeIndexes={activeIndexes} isLoaded={isLoaded}/>
                             <SliderButton buttonType="Next" showText={false} sliderButtonClick={this.onSliderButtonClick} />
                         </div>
                 }
-
             </>
         );
     }

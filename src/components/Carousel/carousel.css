@@ -10,11 +10,3 @@
     text-align: center;
     height: 100px;
 }
-
-.activeItem {
-    display: block;
-}
-
-.inactiveItem {
-  display: none;
-}

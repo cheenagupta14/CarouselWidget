@@ -2,12 +2,15 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import CarouselItem from "../CarouselItem/index";
+import Loader from "../../Loader/index";
 import "./slider.css";
 
 const Slider = React.memo((props) => {
-    const { activeIndexes, items } = props;
+    const { activeIndexes, items, isLoaded } = props;
+    const conatinerCls = !isLoaded ? "loaderActive": "loaderInActive";
     return (
-        <div className="carouselItemContainer">
+        <div className={"carouselItemContainer " + conatinerCls}>
+        {!isLoaded && <Loader/>}
             {
                 items.length > 0 && activeIndexes.map((activeIndex) => {
                     const item = items[activeIndex];
@@ -23,7 +26,8 @@ const Slider = React.memo((props) => {
 
 Slider.prototypes = {
     activeIndexes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    items: PropTypes.object.isRequired
+    items: PropTypes.object.isRequired,
+    isLoaded: PropTypes.bool
 }
 
 
