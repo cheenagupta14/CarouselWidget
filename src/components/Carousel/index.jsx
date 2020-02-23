@@ -105,14 +105,14 @@ class Carousel extends React.PureComponent {
                 error !== null ? <ErrorDailog error={error}/> : // Show error Dialog is error occurs on fetch call
                    (
                        windowWidth > 480 ? // Layout change for mobile and desktop
-                       ( <>
+                       ( <div id="desktop">
                             <Slider items={items} activeIndexes={activeIndexes}  isLoaded={isLoaded} />
                             <div className="sliderBtnContainer">
                                 <SliderButton buttonType="Prev" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                                 <SliderButton buttonType="Next" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                             </div>
-                        </>) :
-                       ( <div style={{ display: "flex" }}>
+                        </div>) :
+                       ( <div id="mobile" style={{ display: "flex" }}>
                             <SliderButton buttonType="Prev" showText={false} sliderButtonClick={this.onSliderButtonClick} />
                             <Slider items={items} activeIndexes={activeIndexes} isLoaded={isLoaded}/>
                             <SliderButton buttonType="Next" showText={false} sliderButtonClick={this.onSliderButtonClick} />
