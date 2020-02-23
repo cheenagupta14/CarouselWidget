@@ -6,11 +6,9 @@
     height: 80px;
     font-family: Ropa Sans;
     width: 50px;
-    /* display: inline-block; */
     cursor: pointer;
-    /* margin: 0px auto; */
     position: absolute;
-    margin: 25% 0px 25% 20px;
+    margin: 40% 0px 40% 20px;
     opacity: 0.5;
     background-image: url("../../../arrow.svg");
     background-repeat: no-repeat;
@@ -28,7 +26,7 @@
     width: 50px;
     cursor: pointer;
     position: absolute;
-    margin: 25% 0px 25% 20px;
+    margin: 40% 0px 40% 20px;
     right: 20px;
     background-image: url("../../../arrow.svg");
     background-repeat: no-repeat;
@@ -42,10 +40,9 @@
         border-radius: 10px 0px 0px 10px;
         color: white;
         background-color: blue;
-        border: blue;
-        height: 50px;
+        height: 40px;
         font-family: Ropa Sans;
-        width: 50px;
+        width: 80px;
         display: inline-block;
         cursor: pointer;
         margin: 0px auto;
@@ -53,16 +50,19 @@
         background-image: none;
         transform: none;
         position: unset;
+        line-height: 40px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .NextBtn{
         border-radius: 0px 10px 10px 0px;
         color: white;
         background-color: blue;
-        border: blue;
-        height: 50px;
+        height: 40px;
         font-family: Ropa Sans;
-        width: 50px;
+        width: 80px;
         display: inline-block;
         cursor: pointer;
         margin: auto 20px;
@@ -70,6 +70,10 @@
         opacity: 1;
         right: unset;
         position: unset;
+        line-height: 40px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
   }

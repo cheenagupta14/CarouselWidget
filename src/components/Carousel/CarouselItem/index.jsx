@@ -8,7 +8,7 @@ const CarouselItem = (props) => {
     return (
         <div className="itemDiv">
             <div className="imageHolder">
-            <img src={imageInfo.url} width="100%" height="100%" alt={imageInfo.tags}></img>
+            <img src={imageInfo.url} className="image" alt={imageInfo.tags}></img>
             </div>
             <div>
             <label style={{float:"left"}} >{user}</label>

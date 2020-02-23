@@ -1,9 +1,11 @@
 .header{
-    background-color: grey;
+    background-color: #DCDCDC;
+    height: 100px;
 }
 
 .headerLabel{
-    font-family: Ropa Sans;
+    font-size: 30px;
+    line-height: 60px;
+    font-weight: 600;
     padding: 20px;
-    font-size: 20px;
 }

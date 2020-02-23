@@ -3,4 +3,6 @@ body {
   font-family: Ropa Sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #191970;
+  font-size: 20px;
 }
