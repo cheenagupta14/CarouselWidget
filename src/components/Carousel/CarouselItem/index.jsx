@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./carouselItem.css";
 
-const CarouselItem = (props) => {
+const CarouselItem = React.memo((props) => {
     const {user, likes, imageInfo} = props;
     return (
         <div className="itemDiv">
@@ -16,7 +16,7 @@ const CarouselItem = (props) => {
             </div>
         </div>
     )
-}
+});
 
 CarouselItem.propTypes = {
     "imageInfo": PropTypes.object.isRequired,

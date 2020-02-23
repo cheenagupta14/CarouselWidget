@@ -1,14 +1,12 @@
 import * as React from "react";
 import TestRenderer from 'react-test-renderer';
 import Carousel from "./index";
-import { nominalTypeHack } from "prop-types";
 global.window = { innerWidth: 1024}; // mocking the window object
-const nock = require("nock");
 
 describe(" Test Carousel Component", () => {
     const testRenderer = TestRenderer.create(<Carousel />);
     const testInstance = testRenderer.root;
-      console.log("test instance" + testInstance.type);
+      
     it("Component is rendered" , () => {
         expect(testInstance.type).not.toEqual("undefined");
     });
