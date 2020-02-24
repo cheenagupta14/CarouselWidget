@@ -1,5 +1,5 @@
 # CarouselWidget
-A mobile-first coarousel widget that cycles through six images using prev and next button
+A mobile-first carousel widget that cycles through six images using prev and next button
 
 This application is created using React. For initial setup npm create-react-app command is used .
 React components are created under src/components folder .
