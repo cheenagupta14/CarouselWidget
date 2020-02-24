@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from "./components/Header/index";
-import Carousel from "./components/Carousel/index";
+import Header from "../Header/index";
+import Carousel from "../Carousel/index";
 import './App.css';
 
 const App = () => {
