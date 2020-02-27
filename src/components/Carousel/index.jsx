@@ -3,7 +3,7 @@ import SliderButton from "./SliderButton/index";
 import Slider from "./Slider/index";
 import ErrorDailog from "../ErrorDialog/index";
 import Loader from "../Loader/index";
-import "./carousel.css";
+import "./carousel.scss";
 
 // calculate number of active items in carousel
 const noOFItemsVisible = (itemSize, windowWidth) => {
@@ -116,7 +116,7 @@ class Carousel extends React.PureComponent {
                                 <SliderButton buttonType="Next" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                             </div>
                         </div>) :
-                       ( <div id="mobile" style={{ position: "relative"}}>
+                       ( <div id="mobile">
                             <SliderButton buttonType="Prev" showText={false} sliderButtonClick={this.onSliderButtonClick} />
                             <Slider items={items} activeIndexes={activeIndexes} isLoaded={isLoaded}/>
                             <SliderButton buttonType="Next" showText={false} sliderButtonClick={this.onSliderButtonClick} />

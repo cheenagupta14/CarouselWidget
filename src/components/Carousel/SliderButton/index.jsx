@@ -1,11 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import  "./sliderButton.css";
+import  "./sliderButton.scss";
 
 const SliderButton = React.memo((props) => {
     const {buttonType, showText} = props; // Prev or next
       return (
-          <div className={buttonType+"Btn " + "vertical-center"} onClick={() => props.sliderButtonClick(buttonType)}>
+          <div className={buttonType+"Btn vertical-center"} onClick={() => props.sliderButtonClick(buttonType)}>
             {showText && buttonType}
           </div>
       )

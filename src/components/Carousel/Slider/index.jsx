@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import CarouselItem from "../CarouselItem/index";
-import "./slider.css";
+import "./slider.scss";
 
 const Slider = React.memo((props) => {
     const { activeIndexes, items } = props;

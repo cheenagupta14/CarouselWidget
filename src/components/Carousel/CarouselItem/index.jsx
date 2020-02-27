@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 
-import "./carouselItem.css";
+import "./carouselItem.scss";
 
 const CarouselItem = React.memo((props) => {
     const {user, likes, imageInfo} = props;
