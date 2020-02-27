@@ -4,10 +4,3 @@
     height: 100%;
 }
 
-.loaderActive {
-    opacity: 0.5;
-}
-
-.loaderInActive{
-    opacity: 1;
-}

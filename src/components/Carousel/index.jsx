@@ -2,6 +2,7 @@ import * as React from "react";
 import SliderButton from "./SliderButton/index";
 import Slider from "./Slider/index";
 import ErrorDailog from "../ErrorDialog/index";
+import Loader from "../Loader/index";
 import "./carousel.css";
 
 // calculate number of active items in carousel
@@ -72,9 +73,10 @@ class Carousel extends React.PureComponent {
             .then(response => response.json())
             .then(
                 (result) => {
+                    const imageList = result.hits.slice(0, this.state.noOfItemsInCarousel);
                     this.setState({
                         isLoaded: true,
-                        items: result.hits.slice(0, this.state.noOfItemsInCarousel)
+                        items: imageList
                     });
                 }
                   ,
@@ -98,12 +100,14 @@ class Carousel extends React.PureComponent {
     render() {
 
         const { activeIndexes, items , windowWidth, isLoaded, error} = this.state;
+        const showCarousel = isLoaded && !error // Show carousel when data is fetched successfully 
         return (
             <>
-             
-                {
-                error !== null ? <ErrorDailog error={error}/> : // Show error Dialog is error occurs on fetch call
-                   (
+                {!isLoaded && <Loader/> // Show Loading icon when fetch call is in progress
+                }
+                { error && <ErrorDailog error={error}/> // Show error Dialog is error occurs on fetch call
+                } 
+                { showCarousel && (
                        windowWidth > 480 ? // Layout change for mobile and desktop
                        ( <div id="desktop">
                             <Slider items={items} activeIndexes={activeIndexes}  isLoaded={isLoaded} />
