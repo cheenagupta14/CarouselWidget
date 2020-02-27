@@ -102,7 +102,7 @@ class Carousel extends React.PureComponent {
         const { activeIndexes, items , windowWidth, isLoaded, error} = this.state;
         const showCarousel = isLoaded && !error // Show carousel when data is fetched successfully 
         return (
-            <>
+            <main>
                 {!isLoaded && <Loader/> // Show Loading icon when fetch call is in progress
                 }
                 { error && <ErrorDailog error={error}/> // Show error Dialog is error occurs on fetch call
@@ -123,7 +123,7 @@ class Carousel extends React.PureComponent {
                         </div> )
                    )
                 }
-            </>
+            </main>
         );
     }
 

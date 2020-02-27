@@ -19,6 +19,7 @@ React components are created under src/components folder .
 - react-test-renderer:  testing react components
 - react and react-dom : Building react components 
 - nock: mocking API calls
+- node-saas: adding saas files 
 
 # tests
 Because of time constraint Unit tests is writtten only for carousel component (src\components\Carousel\carousel.test.js)
