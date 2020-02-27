@@ -1,5 +1,5 @@
 # CarouselWidget
-A mobile-first coarousel widget that cycles through six images using prev and next button
+A mobile-first carousel widget that cycles through six images using prev and next button
 
 This application is created using React. For initial setup npm create-react-app command is used .
 React components are created under src/components folder .
@@ -15,10 +15,10 @@ React components are created under src/components folder .
   App will run on http://locahost:3000  
 
 # Package Included
-prop-types: adding type check on props of components
-react-test-renderer:  testing react components
-react and react-dom : Building react components 
-nock: mocking API calls
+- prop-types: adding type check on props of components
+- react-test-renderer:  testing react components
+- react and react-dom : Building react components 
+- nock: mocking API calls
 
 # tests
 Because of time constraint Unit tests is writtten only for carousel component (src\components\Carousel\carousel.test.js)
