@@ -5,7 +5,7 @@ import  "./sliderButton.css";
 const SliderButton = React.memo((props) => {
     const {buttonType, showText} = props; // Prev or next
       return (
-          <div className={buttonType+"Btn"} onClick={() => props.sliderButtonClick(buttonType)}>
+          <div className={buttonType+"Btn " + "vertical-center"} onClick={() => props.sliderButtonClick(buttonType)}>
             {showText && buttonType}
           </div>
       )

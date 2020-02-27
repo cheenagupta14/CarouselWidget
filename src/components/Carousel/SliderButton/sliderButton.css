@@ -1,3 +1,11 @@
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
 .PrevBtn{
     border-radius: 100px 0px 0px 100px;
     color: white;
@@ -7,12 +15,12 @@
     width: 50px;
     cursor: pointer;
     position: absolute;
-    margin: 40% 0px 40% 20px;
     opacity: 0.5;
     background-image: url("../../../arrow.svg");
     background-repeat: no-repeat;
     background-position: right;
-    transform: rotate(180deg);
+    left: 20px;
+    transform: translateY(-60%) rotate(180deg);
 }
 
 .NextBtn{
@@ -24,11 +32,11 @@
     width: 50px;
     cursor: pointer;
     position: absolute;
-    margin: 40% 0px 40% 20px;
     right: 20px;
     background-image: url("../../../arrow.svg");
     background-repeat: no-repeat;
     background-position: right;
+    transform: translateY(-60%);
 }
 
 
@@ -42,7 +50,6 @@
         width: 80px;
         display: inline-block;
         cursor: pointer;
-        margin: 0px auto;
         opacity: 1;
         background-image: none;
         transform: none;
@@ -50,6 +57,7 @@
         line-height: 40px;
         position: relative;
         top: 50%;
+        left: unset;
         transform: translateY(-50%);
     }
     
@@ -61,7 +69,7 @@
         width: 80px;
         display: inline-block;
         cursor: pointer;
-        margin: auto 20px;
+        margin-left: 20px;
         background-image: none;
         opacity: 1;
         right: unset;

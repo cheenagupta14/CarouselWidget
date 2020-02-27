@@ -116,7 +116,7 @@ class Carousel extends React.PureComponent {
                                 <SliderButton buttonType="Next" showText={true} sliderButtonClick={this.onSliderButtonClick} />
                             </div>
                         </div>) :
-                       ( <div id="mobile" style={{ display: "flex" }}>
+                       ( <div id="mobile" style={{ position: "relative"}}>
                             <SliderButton buttonType="Prev" showText={false} sliderButtonClick={this.onSliderButtonClick} />
                             <Slider items={items} activeIndexes={activeIndexes} isLoaded={isLoaded}/>
                             <SliderButton buttonType="Next" showText={false} sliderButtonClick={this.onSliderButtonClick} />
