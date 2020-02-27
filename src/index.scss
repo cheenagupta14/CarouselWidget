@@ -6,3 +6,40 @@ body {
   color: #191970;
   font-size: 20px;
 }
+
+$off-wht: #fff; 
+
+@mixin desktop_btn($btn-color) {
+  // The $btn-color variable can now be placed anywhere a lighter or darker color is being described in the mixin.
+  color: white;
+  height: 40px;
+  width: 80px;
+  cursor: pointer;
+  background-image: none;
+  opacity: 1;
+  line-height: 40px;
+  border-color: darken($btn-color, 20%);
+  background-color: $btn-color;
+  &:hover {
+     background-color: darken($btn-color, 6%);
+     box-shadow: 0 .125em $off-wht, inset 0 .063em $off-wht, inset 0 -.188em lighten($btn-color, 2%);
+  }
+  &:active {
+     box-shadow: 0 .063em $off-wht, inset 0 0 1.094em darken($btn-color, 40%), inset 0 .063em darken($btn-color, 20%),inset 0 -0.188em darken($btn-color, 20%); 
+  }
+}
+
+@mixin mobile_btn($btn-color) {
+  color: white;
+  background-color: $btn-color;
+  opacity: 0.5;
+  height: 80px;
+  width: 50px;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($btn-color, 6%);
+ }
+ &:active {
+   box-shadow: 2px 2px 2px 2px darken($btn-color, 20%) inset;
+ }
+}
